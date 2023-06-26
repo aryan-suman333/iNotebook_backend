@@ -6,8 +6,6 @@ const User = require("../models/User");
 const fetchUser = require("../middleware/fetchUser");
 const { body, validationResult } = require('express-validator');
 
-const JWT_SECRET = "ThereIsNoSecret";
-
 // Route1 Creating user no login required
 router.post("/createuser",[
 
@@ -41,7 +39,7 @@ router.post("/createuser",[
 
         // json web token
         const data = {user: { id: user.id}};
-        const authToken = jwt.sign(data, JWT_SECRET);
+        const authToken = jwt.sign(data, process.env.JWT_SECRET);
         success = true;
         res.json({success, authToken});
 
@@ -78,7 +76,7 @@ router.post("/login",[
         }
 
         const data = {user: { id: user.id}};
-        const authToken = jwt.sign(data, JWT_SECRET)
+        const authToken = jwt.sign(data, process.env.JWT_SECRET)
         success = true;
         res.json({success, authToken});
     } catch (error) {
