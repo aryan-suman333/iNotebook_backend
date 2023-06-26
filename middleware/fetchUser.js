@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = "ThereIsNoSecret";
 
 const fetchUser = (req, res, next)=>{
     // get user from jwt token
