@@ -8,6 +8,7 @@ app.use(cors())
 app.use(express.json());
 
 // routes
+app.use('/', require('./routes/root'))
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/notes", require("./routes/notes"));
 
